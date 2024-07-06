@@ -28,14 +28,16 @@ namespace FareSystem.Views
             vehicleCB.Text = fare.VehicleName.ToString();
             basicPriceTB.Text = fare.BasicPrice.ToString();
             distancePriceTB.Text = fare.DistancePrice.ToString();
+            distanceTB.Text = fare.Distance.ToString();
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
             Enum.TryParse(vehicleCB.Text, out Vehicle vehicle);
             int.TryParse(basicPriceTB.Text, out int basicPrice);
-            int.TryParse(distancePriceTB.Text, out int distance);
-            var fare = new Fare(vehicle, basicPrice, distance);
+            int.TryParse(distancePriceTB.Text, out int distancePrice);
+            int.TryParse(distanceTB.Text, out int distance);
+            var fare = new Fare(vehicle, basicPrice, distancePrice, distance);
             _instance.ResultFare = fare;
             DialogResult = DialogResult.OK;
         }

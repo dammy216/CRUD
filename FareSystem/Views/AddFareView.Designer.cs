@@ -33,18 +33,19 @@
             this.vehicleCB = new System.Windows.Forms.ComboBox();
             this.confirmButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.distanceTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // basicPriceTB
             // 
-            this.basicPriceTB.Location = new System.Drawing.Point(319, 235);
+            this.basicPriceTB.Location = new System.Drawing.Point(322, 147);
             this.basicPriceTB.Name = "basicPriceTB";
             this.basicPriceTB.Size = new System.Drawing.Size(100, 19);
             this.basicPriceTB.TabIndex = 0;
             // 
             // distancePriceTB
             // 
-            this.distancePriceTB.Location = new System.Drawing.Point(319, 299);
+            this.distancePriceTB.Location = new System.Drawing.Point(322, 211);
             this.distancePriceTB.Name = "distancePriceTB";
             this.distancePriceTB.Size = new System.Drawing.Size(100, 19);
             this.distancePriceTB.TabIndex = 1;
@@ -57,7 +58,7 @@
             "バス",
             "電車",
             "飛行機"});
-            this.vehicleCB.Location = new System.Drawing.Point(319, 157);
+            this.vehicleCB.Location = new System.Drawing.Point(322, 69);
             this.vehicleCB.Name = "vehicleCB";
             this.vehicleCB.Size = new System.Drawing.Size(121, 20);
             this.vehicleCB.TabIndex = 2;
@@ -82,11 +83,19 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // distanceTB
+            // 
+            this.distanceTB.Location = new System.Drawing.Point(322, 280);
+            this.distanceTB.Name = "distanceTB";
+            this.distanceTB.Size = new System.Drawing.Size(100, 19);
+            this.distanceTB.TabIndex = 5;
+            // 
             // AddFareView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.distanceTB);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.vehicleCB);
@@ -106,5 +115,6 @@
         private System.Windows.Forms.ComboBox vehicleCB;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.TextBox distanceTB;
     }
 }

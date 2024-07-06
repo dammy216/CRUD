@@ -42,13 +42,20 @@ namespace FareSystem.Model.Managers
             _fareList.RemoveAt(index);
         }
 
+        private int CalcPrice(int basicPrice, int distancePrice, int distance)
+        {
+            return basicPrice + (distancePrice * distance);
+        }
+
         public string[] GetFareItems(Fare fare)
         {
             var name = fare.VehicleName.ToString();
             var basicPrice = fare.BasicPrice.ToString();
             var distancePrice = fare.DistancePrice.ToString();
+            var distance = fare.Distance.ToString();
+            var totalPrice = CalcPrice(fare.BasicPrice, fare.DistancePrice, fare.Distance).ToString();
 
-            string[] items = {name,  basicPrice, distancePrice};
+            string[] items = {name,  basicPrice, distancePrice, distance, totalPrice};
             return items;
         }
     }
