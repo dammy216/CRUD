@@ -19,7 +19,9 @@ namespace FareSystem
         public FareView()
         {
             InitializeComponent();
+            UpdateGridView();
             UpdateButton();
+            fareGV.TopLeftHeaderCell.Value = "NO";
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -40,6 +42,8 @@ namespace FareSystem
             {
                 int rowIndex = fareGV.Rows.Add(_instance.GetFareItems(fare));
                 fareGV.Rows[rowIndex].Tag = fare;
+                var index = rowIndex + 1;
+                fareGV.Rows[rowIndex].HeaderCell.Value = index.ToString();
             }
         }
 
@@ -48,14 +52,14 @@ namespace FareSystem
             var fare = new AddFareView(fareGV.SelectedRows[0].Tag as Fare);
             if(fare.ShowDialog() == DialogResult.OK)
             {
-                _instance.EditFare(fareGV.SelectedRows[0].Index);
+                _instance.EditFare(fareGV.SelectedRows[0].Tag as Fare);
                 UpdateGridView();
             }
         }
 
         private void deleteButton_Click_1(object sender, EventArgs e)
         {
-            _instance.DeleteFare(fareGV.SelectedRows[0].Index);
+            _instance.DeleteFare(fareGV.SelectedRows[0].Tag as Fare);
             UpdateGridView();
             UpdateButton();
         }
@@ -64,6 +68,23 @@ namespace FareSystem
         {
             editButton.Enabled = fareGV.SelectedRows.Count > 0;
             deleteButton.Enabled = fareGV.SelectedRows.Count > 0;
+        }
+
+        private void saveMenu_Click(object sender, EventArgs e)
+        {
+            _instance.SaveToCsv();
+        }
+
+        private void loadMenu_Click(object sender, EventArgs e)
+        {
+            _instance.LoadFromCsv();
+            UpdateGridView();
+            UpdateButton();
+        }
+
+        private void closeMenu_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
